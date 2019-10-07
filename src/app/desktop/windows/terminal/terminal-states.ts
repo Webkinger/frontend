@@ -42,13 +42,13 @@ export abstract class CommandTerminalState implements TerminalState {
 
   abstract commandNotFound(command: string);
 
-  autocomplete(content: string): string {
-    return content
+  autocomplete(content: string): IterableIterator<string> {
+    return (content
       ? Object.keys(this.commands)
-        .filter(n => !['chaozz'].includes(n))
+        .filter(n => ![content, 'chaozz'].includes(n))
+        .filter(n => n.startsWith(content))
         .sort()
-        .find(n => n.startsWith(content))
-      : '';
+      : []).values();
   }
 
   getHistory(): string[] {
@@ -1101,8 +1101,8 @@ export abstract class ChoiceTerminalState implements TerminalState {
     this.terminal.outputText('\'' + choice + '\' is not one of the following: ' + Object.keys(this.choices).join(', '));
   }
 
-  autocomplete(content: string): string {
-    return content ? Object.keys(this.choices).sort().find(choice => choice.startsWith(content)) : '';
+  autocomplete(content: string): IterableIterator<string> {
+    return (content ? Object.keys(this.choices).sort().filter(choice => choice.startsWith(content)) : []).values();
   }
 
   getHistory(): string[] {
