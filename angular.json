@@ -29,6 +29,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "node_modules/xterm/css/xterm.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
@@ -54,10 +55,8 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json",
-
               "budgets": [
                 {
                   "type": "initial",
@@ -103,6 +102,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "node_modules/xterm/css/xterm.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {

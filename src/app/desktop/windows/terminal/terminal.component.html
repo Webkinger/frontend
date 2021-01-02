@@ -1,16 +1,1 @@
-<div #terminalContainer (click)="focusCommandLine()" (keydown.control.d)="$event.preventDefault(); cmdLine.value = ''"
-     id="terminal-container">
-  <div id="terminal-window">
-    <output #history id="terminal-history"></output>
-    <div id="input-line">
-      <div #prompt [innerHTML]="promptHtml" id="prompt"></div>
-      <input #cmdLine
-             (keydown.arrowdown)="$event.preventDefault(); nextFromHistory()"
-             (keydown.arrowup)="$event.preventDefault(); previousFromHistory()"
-             (keydown.enter)="$event.preventDefault(); enter(cmdLine.value)"
-             (keydown.tab)="$event.preventDefault(); autocomplete(cmdLine.value)"
-             autocomplete="off" autofocus id="cmdline"
-             size="5" spellcheck="false" type="text">
-    </div>
-  </div>
-</div>
+<div #terminal></div>
